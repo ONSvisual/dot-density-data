@@ -1,0 +1,535 @@
+[
+  {
+    "varCode": "legal_partnership_status",
+    "classCode": "legal_partnership_status_3a",
+    "filePath": "./input/data/TS002_legal_partnership_status_3a_2021.csv.gz",
+    "varName": "Legal partnership status",
+    "baseUrl": "https://ons-dp-prod-census-maps-dem-mig.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "legal_partnership_status_3a-001",
+        "name": "Married or in a registered civil partnership"
+      },
+      {
+        "code": "legal_partnership_status_3a-002",
+        "name": "Other marital or civil partnership status"
+      }
+    ]
+  },
+  {
+    "varCode": "hh_family_composition",
+    "classCode": "hh_family_composition_4a",
+    "filePath": "./input/data/TS003_hh_family_composition_4a_2021.csv.gz",
+    "varName": "Household composition",
+    "baseUrl": "https://ons-dp-prod-census-maps-dem-mig.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "hh_family_composition_4a-001",
+        "name": "Other household types",
+        "nameOld": "Multiple family household"
+      },
+      {
+        "code": "hh_family_composition_4a-002",
+        "name": "One-person household",
+        "nameOld": "One person household"
+      },
+      {
+        "code": "hh_family_composition_4a-003",
+        "name": "Single family household"
+      }
+    ]
+  },
+  {
+    "varCode": "country_of_birth",
+    "classCode": "country_of_birth_3a",
+    "filePath": "./input/data/TS004_country_of_birth_3a_2021.csv.gz",
+    "varName": "Country of birth",
+    "baseUrl": "https://ons-dp-prod-census-maps-dem-mig.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "country_of_birth_3a-001", "name": "Born in the UK" },
+      { "code": "country_of_birth_3a-002", "name": "Born outside the UK" }
+    ]
+  },
+  {
+    "varCode": "passports_all",
+    "classCode": "passports_all_4a",
+    "filePath": "./input/data/TS005_passports_all_4a_2021.csv.gz",
+    "varName": "Passports held",
+    "baseUrl": "https://ons-dp-prod-census-maps-dem-mig.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "passports_all_4a-001", "name": "UK passport" },
+      { "code": "passports_all_4a-002", "name": "Non-UK passport" },
+      { "code": "passports_all_4a-003", "name": "No passport held" }
+    ]
+  },
+  {
+    "varCode": "sex",
+    "classCode": "sex",
+    "filePath": "./input/data/TS008_sex_2021.csv.gz",
+    "varName": "Sex",
+    "baseUrl": "https://ons-dp-prod-census-maps-dem-mig.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "sex-001", "name": "Female" },
+      { "code": "sex-002", "name": "Male" }
+    ]
+  },
+  {
+    "varCode": "hh_deprivation",
+    "classCode": "hh_deprivation",
+    "filePath": "./input/data/TS011_hh_deprivation_2021.csv.gz",
+    "varName": "Household deprivation",
+    "baseUrl": "https://ons-dp-prod-census-maps-dem-mig.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "hh_deprivation-001",
+        "name": "Household is not deprived in any dimension"
+      },
+      {
+        "code": "hh_deprivation-002",
+        "name": "Household is deprived in one dimension"
+      },
+      {
+        "code": "hh_deprivation-003",
+        "name": "Household is deprived in two dimensions"
+      },
+      {
+        "code": "hh_deprivation-004",
+        "name": "Household is deprived in three dimensions"
+      },
+      {
+        "code": "hh_deprivation-005",
+        "name": "Household is deprived in four dimensions"
+      }
+    ]
+  },
+  {
+    "varCode": "residence_length",
+    "classCode": "residence_length_6b",
+    "filePath": "./input/data/TS016_residence_length_6b_2021.csv.gz",
+    "varName": "Length of residence in the UK",
+    "baseUrl": "https://ons-dp-prod-census-maps-dem-mig.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "residence_length_6b-001", "name": "Born in the UK" },
+      { "code": "residence_length_6b-002", "name": "10 years or more" },
+      {
+        "code": "residence_length_6b-003",
+        "name": "5 years or more, but less than 10 years"
+      },
+      {
+        "code": "residence_length_6b-004",
+        "name": "2 years or more, but less than 5 years"
+      },
+      { "code": "residence_length_6b-005", "name": "Less than 2 years" }
+    ]
+  },
+  {
+    "varCode": "hh_size",
+    "classCode": "hh_size_5a",
+    "filePath": "./input/data/TS017_hh_size_5a_2021.csv.gz",
+    "varName": "Household size",
+    "baseUrl": "https://ons-dp-prod-census-maps-dem-mig.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "hh_size_5a-001", "name": "1 person in household" },
+      { "code": "hh_size_5a-002", "name": "2 people in household" },
+      { "code": "hh_size_5a-003", "name": "3 people in household" },
+      { "code": "hh_size_5a-004", "name": "4 or more people in household" }
+    ]
+  },
+  {
+    "varCode": "migrant_ind",
+    "classCode": "migrant_ind",
+    "filePath": "./input/data/TS019_migrant_ind_2021.csv.gz",
+    "varName": "Migrant indicator",
+    "baseUrl": "https://ons-dp-prod-census-maps-dem-mig.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "migrant_ind-000",
+        "name": "Address one year ago is the same as the address of enumeration"
+      },
+      {
+        "code": "migrant_ind-001",
+        "name": "Address one year ago is student term-time or boarding school address in the UK"
+      },
+      {
+        "code": "migrant_ind-002",
+        "name": "Migrant from within the UK: Address one year ago was in the UK"
+      },
+      {
+        "code": "migrant_ind-003",
+        "name": "Migrant from outside the UK: Address one year ago was outside the UK"
+      }
+    ]
+  },
+  {
+    "varCode": "ethnic_group_tb",
+    "classCode": "ethnic_group_tb_6a",
+    "filePath": "./input/data/TS021_ethnic_group_tb_6a_2021.csv.gz",
+    "varName": "Ethnic group",
+    "baseUrl": "https://ons-dp-prod-census-maps-eilr.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "ethnic_group_tb_6a-001",
+        "name": "Asian, Asian British or Asian Welsh"
+      },
+      {
+        "code": "ethnic_group_tb_6a-002",
+        "name": "Black, Black British, Black Welsh, Caribbean or African"
+      },
+      {
+        "code": "ethnic_group_tb_6a-003",
+        "name": "Mixed or Multiple ethnic groups"
+      },
+      { "code": "ethnic_group_tb_6a-004", "name": "White" },
+      { "code": "ethnic_group_tb_6a-005", "name": "Other ethnic group" }
+    ]
+  },
+  {
+    "varCode": "hh_language",
+    "classCode": "hh_language",
+    "filePath": "./input/data/TS025_hh_language_2021.csv.gz",
+    "varName": "Household language (English and Welsh)",
+    "baseUrl": "https://ons-dp-prod-census-maps-eilr.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "hh_language-001",
+        "name": "All adults in household have English in England, or English or Welsh in Wales as a main language"
+      },
+      {
+        "code": "hh_language-002",
+        "name": "At least one but not all adults in household have English in England, or English or Welsh in Wales as a main language"
+      },
+      {
+        "code": "hh_language-003",
+        "name": "No adults in household, but at least one person aged 3 to 15 years, has English in England or English or Welsh in Wales as a main language"
+      },
+      {
+        "code": "hh_language-004",
+        "name": "No people in household have English in England, or English or Welsh in Wales as a main language"
+      }
+    ]
+  },
+  {
+    "varCode": "national_identity_all",
+    "classCode": "national_identity_all_4a",
+    "filePath": "./input/data/TS027_national_identity_all_4a_2021.csv.gz",
+    "varName": "National identity",
+    "baseUrl": "https://ons-dp-prod-census-maps-eilr.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "national_identity_all_4a-001",
+        "name": "One or more UK identity only"
+      },
+      {
+        "code": "national_identity_all_4a-002",
+        "name": "UK identity and non-UK identity"
+      },
+      { "code": "national_identity_all_4a-003", "name": "Non-UK identity only" }
+    ]
+  },
+  {
+    "varCode": "english_proficiency",
+    "classCode": "english_proficiency_4a",
+    "filePath": "./input/data/TS029_english_proficiency_4a_2021.csv.gz",
+    "varName": "Proficiency in English language",
+    "baseUrl": "https://ons-dp-prod-census-maps-eilr.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "english_proficiency_4a-001",
+        "name": "Main language is English (English or Welsh in Wales)"
+      },
+      {
+        "code": "english_proficiency_4a-002",
+        "name": "Main language is not English (English or Welsh in Wales): Can speak English very well or well"
+      },
+      {
+        "code": "english_proficiency_4a-003",
+        "name": "Main language is not English (English or Welsh in Wales): Cannot speak English or cannot speak English well"
+      }
+    ]
+  },
+  {
+    "varCode": "accommodation_type",
+    "classCode": "accommodation_type_3a",
+    "filePath": "./input/data/TS044_accommodation_type_3a_2021.csv.gz",
+    "varName": "Accommodation type",
+    "baseUrl": "https://ons-dp-prod-census-maps-hou.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "accommodation_type_3a-001",
+        "name": "Whole house or bungalow"
+      },
+      {
+        "code": "accommodation_type_3a-002",
+        "name": "Flat, maisonette or apartment"
+      },
+      {
+        "code": "accommodation_type_3a-003",
+        "name": "A caravan or other mobile or temporary structure"
+      }
+    ]
+  },
+  {
+    "varCode": "number_of_cars",
+    "classCode": "number_of_cars_5a",
+    "filePath": "./input/data/TS045_number_of_cars_5a_2021.csv.gz",
+    "varName": "Number of cars or vans",
+    "baseUrl": "https://ons-dp-prod-census-maps-hou.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "number_of_cars_5a-000",
+        "name": "No cars or vans in household"
+      },
+      { "code": "number_of_cars_5a-001", "name": "1 car or van in household" },
+      {
+        "code": "number_of_cars_5a-002",
+        "name": "2 cars or vans in household"
+      },
+      {
+        "code": "number_of_cars_5a-003",
+        "name": "3 or more cars or vans in household"
+      }
+    ]
+  },
+  {
+    "varCode": "heating_type",
+    "classCode": "heating_type_3a",
+    "filePath": "./input/data/TS046_heating_type_3a_2021.csv.gz",
+    "varName": "Type of central heating in household",
+    "baseUrl": "https://ons-dp-prod-census-maps-hou.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "heating_type_3a-001",
+        "name": "Does not have central heating"
+      },
+      { "code": "heating_type_3a-002", "name": "Does have central heating" }
+    ]
+  },
+  {
+    "varCode": "number_bedrooms",
+    "classCode": "number_bedrooms_5a",
+    "filePath": "./input/data/TS050_number_bedrooms_5a_2021.csv.gz",
+    "varName": "Number of bedrooms",
+    "baseUrl": "https://ons-dp-prod-census-maps-hou.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "number_bedrooms_5a-001", "name": "1 bedroom" },
+      { "code": "number_bedrooms_5a-002", "name": "2 bedrooms" },
+      { "code": "number_bedrooms_5a-003", "name": "3 bedrooms" },
+      { "code": "number_bedrooms_5a-004", "name": "4 or more bedrooms" }
+    ]
+  },
+  {
+    "varCode": "occupancy_rating_bedrooms",
+    "classCode": "occupancy_rating_bedrooms_6a",
+    "filePath": "./input/data/TS052_occupancy_rating_bedrooms_6a_2021.csv.gz",
+    "varName": "Occupancy rating for bedrooms",
+    "baseUrl": "https://ons-dp-prod-census-maps-hou.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "occupancy_rating_bedrooms_6a-001",
+        "name": "Occupancy rating of bedrooms: +2 or more"
+      },
+      {
+        "code": "occupancy_rating_bedrooms_6a-002",
+        "name": "Occupancy rating of bedrooms: +1"
+      },
+      {
+        "code": "occupancy_rating_bedrooms_6a-003",
+        "name": "Occupancy rating of bedrooms: 0"
+      },
+      {
+        "code": "occupancy_rating_bedrooms_6a-004",
+        "name": "Occupancy rating of bedrooms: -1"
+      },
+      {
+        "code": "occupancy_rating_bedrooms_6a-005",
+        "name": "Occupancy rating of bedrooms: -2 or less"
+      }
+    ]
+  },
+  {
+    "varCode": "hh_tenure",
+    "classCode": "hh_tenure_5a",
+    "filePath": "./input/data/TS054_hh_tenure_5a_2021.csv.gz",
+    "varName": "Tenure of household",
+    "baseUrl": "https://ons-dp-prod-census-maps-hou.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "hh_tenure_5a-000", "name": "Owned: Owns outright" },
+      {
+        "code": "hh_tenure_5a-001",
+        "name": "Owned: Owns with a mortgage or loan or shared ownership"
+      },
+      { "code": "hh_tenure_5a-002", "name": "Rented: Social rented" },
+      {
+        "code": "hh_tenure_5a-003",
+        "name": "Private rented or lives rent free"
+      }
+    ]
+  },
+  {
+    "varCode": "workplace_travel",
+    "classCode": "workplace_travel_4a",
+    "filePath": "./input/data/TS058_workplace_travel_4a_2021.csv.gz",
+    "varName": "Distance travelled to work",
+    "baseUrl": "https://ons-dp-prod-census-maps-ttw.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "workplace_travel_4a-001", "name": "Less than 10km" },
+      { "code": "workplace_travel_4a-002", "name": "10km and over" },
+      { "code": "workplace_travel_4a-003", "name": "Works mainly from home" },
+      { "code": "workplace_travel_4a-004", "name": "Other" }
+    ]
+  },
+  {
+    "varCode": "hours_per_week_worked",
+    "classCode": "hours_per_week_worked_3a",
+    "filePath": "./input/data/TS059_hours_per_week_worked_3a_2021.csv.gz",
+    "varName": "Hours worked",
+    "baseUrl": "https://ons-dp-prod-census-maps-lab.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "hours_per_week_worked_3a-001",
+        "name": "Part-time: 30 hours or less worked"
+      },
+      {
+        "code": "hours_per_week_worked_3a-002",
+        "name": "Full-time: 31 or more hours worked"
+      }
+    ]
+  },
+  {
+    "varCode": "has_ever_worked",
+    "classCode": "has_ever_worked",
+    "filePath": "./input/data/TS065_has_ever_worked_2021.csv.gz",
+    "varName": "Employment history",
+    "baseUrl": "https://ons-dp-prod-census-maps-lab.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "has_ever_worked-001",
+        "name": "Not in employment: Worked in the last 12 months",
+        "nameOld": "Short-term unemployed: Worked in the last 12 months"
+      },
+      {
+        "code": "has_ever_worked-002",
+        "name": "Not in employment: Not worked in the last 12 months",
+        "nameOld": "Long-term unemployed: Not worked in the last 12 months"
+      },
+      {
+        "code": "has_ever_worked-003",
+        "name": "Not in employment: Never worked",
+        "nameOld": "Never worked"
+      }
+    ]
+  },
+  {
+    "varCode": "economic_activity_status",
+    "classCode": "economic_activity_status_4a",
+    "filePath": "./input/data/TS066_economic_activity_status_4a_2021.csv.gz",
+    "varName": "Economic activity status",
+    "baseUrl": "https://ons-dp-prod-census-maps-lab.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "economic_activity_status_4a-001",
+        "name": "Economically active: In employment (including full-time students)"
+      },
+      {
+        "code": "economic_activity_status_4a-002",
+        "name": "Economically active: Unemployed (including full-time students)"
+      },
+      {
+        "code": "economic_activity_status_4a-003",
+        "name": "Economically inactive"
+      }
+    ]
+  },
+  {
+    "varCode": "highest_qualification",
+    "classCode": "highest_qualification_6a",
+    "filePath": "./input/data/TS067_highest_qualification_6a_2021.csv.gz",
+    "varName": "Highest level of qualification",
+    "baseUrl": "https://ons-dp-prod-census-maps-edu.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "highest_qualification_6a-000", "name": "No qualifications" },
+      {
+        "code": "highest_qualification_6a-001",
+        "name": "Highest level of qualification: Level 1, 2 or 3 qualifications"
+      },
+      {
+        "code": "highest_qualification_6a-002",
+        "name": "Highest level of qualification: Apprenticeship"
+      },
+      {
+        "code": "highest_qualification_6a-003",
+        "name": "Highest level of qualification: Level 4 qualifications or above",
+        "nameOld": "Highest level of qualification: Level 4 qualifications and above"
+      },
+      {
+        "code": "highest_qualification_6a-004",
+        "name": "Highest level of qualification: Other qualifications"
+      }
+    ]
+  },
+  {
+    "varCode": "in_full_time_education",
+    "classCode": "in_full_time_education",
+    "filePath": "./input/data/TS068_in_full_time_education_2021.csv.gz",
+    "varName": "Schoolchild or full-time student indicator",
+    "baseUrl": "https://ons-dp-prod-census-maps-edu.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "in_full_time_education-001", "name": "Student" },
+      { "code": "in_full_time_education-002", "name": "Not a student" }
+    ]
+  },
+  {
+    "varCode": "health_in_general",
+    "classCode": "health_in_general_4a",
+    "filePath": "./input/data/TS037_health_in_general_4a_2021.csv.gz",
+    "varName": "General health",
+    "baseUrl": "https://ons-dp-prod-census-maps-huc.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "health_in_general_4a-001",
+        "name": "Very good or good health"
+      },
+      { "code": "health_in_general_4a-002", "name": "Fair health" },
+      { "code": "health_in_general_4a-003", "name": "Bad or very bad health" }
+    ]
+  },
+  {
+    "varCode": "disability",
+    "classCode": "disability_3a",
+    "filePath": "./input/data/TS038_disability_3a_2021.csv.gz",
+    "varName": "Disability",
+    "baseUrl": "https://ons-dp-prod-census-maps-huc.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      {
+        "code": "disability_3a-001",
+        "name": "Disabled under the Equality Act"
+      },
+      {
+        "code": "disability_3a-002",
+        "name": "Not disabled under the Equality Act"
+      }
+    ]
+  },
+  {
+    "varCode": "is_carer",
+    "classCode": "is_carer_5a",
+    "filePath": "./input/data/TS039_is_carer_5a_2021.csv.gz",
+    "varName": "Provision of unpaid care",
+    "baseUrl": "https://ons-dp-prod-census-maps-huc.s3.eu-west-2.amazonaws.com",
+    "categories": [
+      { "code": "is_carer_5a-001", "name": "Provides no unpaid care" },
+      {
+        "code": "is_carer_5a-002",
+        "name": "Provides 19 or less hours unpaid care a week"
+      },
+      {
+        "code": "is_carer_5a-003",
+        "name": "Provides 20 to 49 hours unpaid care a week"
+      },
+      {
+        "code": "is_carer_5a-004",
+        "name": "Provides 50 or more hours unpaid care a week"
+      }
+    ]
+  }
+]

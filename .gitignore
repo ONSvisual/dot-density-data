@@ -1,0 +1,5 @@
+/input/geo/*
+/output/dots/*
+/node_modules/
+
+.DS_Store
