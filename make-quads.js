@@ -3,7 +3,7 @@ import zlib from "zlib";
 import { csvParse, autoType, csvFormat } from "d3-dsv";
 
 const config_path = "./output/data/content.json";
-const lookup_path = (key) => `./input/geo/${key}21-lookup.csv`;
+const lookup_path = (key) => `./input/lookup/${key}21-lookup.csv`;
 const output_path = (key, quad) => `./output/data/${key}/${quad}`;
 const keys = ["lad", "msoa", "oa"];
 

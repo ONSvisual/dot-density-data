@@ -6,7 +6,7 @@ import { csvParse, autoType } from "d3-dsv";
 import { sleep } from "./js/utils.js";
 
 const geometry = "./input/geo/oa21-bfc-clipped.json.gz";
-const population = "./input/geo/oa21-population.csv";
+const population = "./input/lookup/oa21-population.csv";
 const output = "./output/dots/oa21-dots.json";
 
 // Load population counts per OA
