@@ -20,7 +20,7 @@ function getMeta(json, d) {
         m.varName = variable.name;
         m.unit = variable.units.toLowerCase();
         m.desc = variable.desc;
-        m.long_descr = variable.long_desc;
+        m.long_desc = variable.long_desc;
         m.baseUrl = variable.base_url_2021;
         m.categories = [];
         variable.classifications.forEach(classification => {
