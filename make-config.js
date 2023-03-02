@@ -15,8 +15,12 @@ function getMeta(json, d) {
   json.content.forEach((theme) => {
     theme.variables.forEach((variable) => {
       if (variable.code === varCode || varCode.startsWith(variable.code)) {
+        m.group = theme.name;
         m.filePath = `./input/data/${d}_2021.csv.gz`;
         m.varName = variable.name;
+        m.unit = variable.units.toLowerCase();
+        m.desc = variable.desc;
+        m.long_descr = variable.long_desc;
         m.baseUrl = variable.base_url_2021;
         m.categories = [];
         variable.classifications.forEach(classification => {
