@@ -2,8 +2,12 @@ export default [
   {
     "varCode": "health_in_general",
     "classCode": "health_in_general_4a",
+    "group": "Health",
     "filePath": "./input/data/TS037_health_in_general_4a_2021.csv.gz",
     "varName": "General health",
+    "unit": "person",
+    "desc": "How people rate their general health.",
+    "long_desc": "A person's assessment of the general state of their health from very good to very bad. This assessment is not based on a person's health over any specified period of time.",
     "baseUrl": "https://ons-dp-prod-census-maps-huc.s3.eu-west-2.amazonaws.com",
     "categories": [
       {
@@ -23,8 +27,12 @@ export default [
   {
     "varCode": "disability",
     "classCode": "disability_3a",
+    "group": "Health",
     "filePath": "./input/data/TS038_disability_3a_2021.csv.gz",
     "varName": "Disability",
+    "unit": "person",
+    "desc": "People with a long-term health problem or disability, including conditions or illnesses relating to old-age.",
+    "long_desc": "People who assessed their day-to-day activities as limited by long-term physical or mental health conditions or illnesses are considered disabled. This definition of a disabled person meets the harmonised standard for measuring disability and is in line with the Equality Act (2010).",
     "baseUrl": "https://ons-dp-prod-census-maps-huc.s3.eu-west-2.amazonaws.com",
     "categories": [
       {
@@ -42,6 +50,9 @@ export default [
     "classCode": "is_carer_5a",
     "filePath": "./input/data/TS039_is_carer_5a_2021.csv.gz",
     "varName": "Provision of unpaid care",
+    "unit": "person",
+    "desc": "Hours of unpaid care provided per week.",
+    "long_desc": "An unpaid carer may look after, give help or support to anyone who has long-term physical or mental ill-health conditions, illness or problems related to old age.  \n\nThis does not include any activities as part of paid employment. \n\nThis help can be within or outside of the carer's household.",
     "baseUrl": "https://ons-dp-prod-census-maps-huc.s3.eu-west-2.amazonaws.com",
     "categories": [
       {
