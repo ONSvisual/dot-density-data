@@ -2,8 +2,6 @@
 /output/dots/*
 /node_modules/
 
-/input/geo/oa21-bfc-clipped.json.gz.sf-part2
-/input/geo/oa21-bfc-clipped.json.gz.sf-part3
 /input/geo/oa21-bfc-clipped.json.gz.sf-part4
 /input/geo/oa21-bfc-clipped.json.gz.sf-part5
 
