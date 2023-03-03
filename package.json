@@ -15,6 +15,7 @@
     "d3-geo": "^3.1.0",
     "line-by-line": "^0.1.6",
     "node-fetch": "^3.3.0",
-    "polygon-clipping": "^0.15.3"
+    "polygon-clipping": "^0.15.3",
+    "split-file": "^2.3.0"
   }
 }

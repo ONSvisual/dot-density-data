@@ -1,4 +1,4 @@
-import datasets from "./config/datasets-all.js";
+import datasets from "./config/datasets.js";
 import maps from "./config/category-maps.js";
 import extra from "./config/content-extra.js";
 import fetch from "node-fetch";
