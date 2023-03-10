@@ -1,5 +1,6 @@
 /input/geo/pre/
 /output/dots/*
 /node_modules/
+/output/dirs/*
 
 .DS_Store
