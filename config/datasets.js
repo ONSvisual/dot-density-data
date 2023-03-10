@@ -22,7 +22,7 @@ export default [
   "TS052_occupancy_rating_bedrooms_6a",
   "TS054_hh_tenure_5a",
   "TS058_workplace_travel_4a",
-  "TS059_hours_per_week_worked_3a",
+  "TS059_hours_per_week_worked",
   "TS065_has_ever_worked",
   "TS066_economic_activity_status_4a",
   "TS067_highest_qualification_6a",

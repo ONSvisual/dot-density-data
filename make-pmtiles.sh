@@ -18,7 +18,7 @@ tippecanoe -z11 -o output/tiles/number_bedrooms_5a-z11.pmtiles -P -pf -pk output
 tippecanoe -z11 -o output/tiles/occupancy_rating_bedrooms_6a-z11.pmtiles -P -pf -pk output/dots/occupancy_rating_bedrooms_6a.json.gz
 tippecanoe -z11 -o output/tiles/hh_tenure_5a-z11.pmtiles -P -pf -pk output/dots/hh_tenure_5a.json.gz
 tippecanoe -z11 -o output/tiles/workplace_travel_4a-z11.pmtiles -P -pf -pk output/dots/workplace_travel_4a.json.gz
-tippecanoe -z11 -o output/tiles/hours_per_week_worked_3a-z11.pmtiles -P -pf -pk output/dots/hours_per_week_worked_3a.json.gz
+tippecanoe -z11 -o output/tiles/hours_per_week_worked-z11.pmtiles -P -pf -pk output/dots/hours_per_week_worked.json.gz
 tippecanoe -z11 -o output/tiles/has_ever_worked-z11.pmtiles -P -pf -pk output/dots/has_ever_worked.json.gz
 tippecanoe -z11 -o output/tiles/economic_activity_status_4a-z11.pmtiles -P -pf -pk output/dots/economic_activity_status_4a.json.gz
 tippecanoe -z11 -o output/tiles/highest_qualification_6a-z11.pmtiles -P -pf -pk output/dots/highest_qualification_6a.json.gz
