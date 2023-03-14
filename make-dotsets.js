@@ -9,7 +9,7 @@ const dots = "./output/dots/oa21-dots.json.gz";
 
 const datasets = JSON.parse(fs.readFileSync(config_path));
 
-const MAX_OA = 1000;
+const MAX_OA = 10000;
 
 function randomRound(exactDotCount, entitiesPerDot, prevExactDotCount, prevRoundedDotCount, prevEntitiesPerDot) {
   if (prevExactDotCount != null && prevExactDotCount < 1) {
@@ -85,8 +85,8 @@ function writeDots(oaCode, allPoints, cols, codes, row, output) {
 
 // Recursive function to run datasets in series (ie. synchronously)
 function runDatasets(n = 0) {
-  // FIXME: delete the following line
-  if (n != 0) return;
+  // // FIXME: delete the following line
+  // if (n != 0) return;
 
   if (n >= datasets.length) return;
   let dataset = datasets[n];
@@ -115,11 +115,11 @@ function runDatasets(n = 0) {
     const lineReader = new readline(fs.createReadStream(dots).pipe(zlib.createGunzip()));
 
     lineReader.on('line', (line) => {
-      // FIXME: delete the following chunk of code
-      if (rowCount > MAX_OA) {
-        lineReader.close();
-        return;
-      }
+      // // FIXME: delete the following chunk of code
+      // if (rowCount > MAX_OA) {
+      //   lineReader.close();
+      //   return;
+      // }
 
       // Read features line-by-line
       let feature = JSON.parse(line);
