@@ -9,6 +9,31 @@ const dots = "./output/dots/oa21-dots.json.gz";
 
 const datasets = JSON.parse(fs.readFileSync(config_path));
 
+const MAX_OA = 100;
+
+function writeDots(points, count, cols, codes, row, output) {
+  points = points.slice(0, count);
+  const len = points.length;
+  if (len != count) throw "Not enough dots!";
+  const cats = (() => {
+    // Category index for each dot
+    // Shuffled to ensure random layout + even dropping by zoom level
+    let cts = [];
+    cols.forEach((c, i) => {
+      for (let j = 0; j < row[c]; j ++) {
+        cts.push(i);
+      }
+    });
+    return shuffle(cts);
+  })();
+  const zoomBreaks = getZoomBreaks(len);
+  points.forEach((p, i) => {
+    p.tippecanoe = {minzoom: getMinzoom(zoomBreaks, i)};
+    p.properties = {cat: codes[cats[i]]};
+  });
+  fs.appendFileSync(output, `${points.map(d => JSON.stringify(d)).join('\n')}\n`);
+}
+
 // Recursive function to run datasets in series (ie. synchronously)
 function runDatasets(n = 0) {
   if (n >= datasets.length) return;
@@ -46,26 +71,8 @@ function runDatasets(n = 0) {
         // When a new OA is reached, apply data and write dots for current OA to output file
         if (points) {
           lineReader.pause();
-          points = points.slice(0, count);
-          const len = points.length;
-          const cats = (() => {
-            // Category index for each dot
-            // Shuffled to ensure random layout + even dropping by zoom level
-            let cts = [];
-            cols.forEach((c, i) => {
-              for (let j = 0; j < row[c]; j ++) {
-                cts.push(i);
-              }
-            });
-            return shuffle(cts);
-          })();
-          const zoomBreaks = getZoomBreaks(len);
-          points.forEach((p, i) => {
-            p.tippecanoe = {minzoom: getMinzoom(zoomBreaks, i)};
-            p.properties = {cat: codes[cats[i]]};
-          });
-          fs.appendFileSync(output, `${points.map(d => JSON.stringify(d)).join('\n')}\n`);
-          dotCount += len;
+          writeDots(points, count, cols, codes, row, output);
+          dotCount += count;
           if (rowCount % 1000 === 0) console.log(`${classification}: ${dotCount} dots processed from ${rowCount} OAs...`);
           lineReader.resume();
         }
