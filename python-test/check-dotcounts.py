@@ -1,6 +1,7 @@
 import csv
 import gzip
 import json
+import pandas as pd
 
 import os
 outpath = 'results'
@@ -55,10 +56,22 @@ for dataset in content[:1]:
 
   #print(results_subset)
 
-  with open(f'{outpath}/{dataset["classCode"]}.csv', 'w', newline='') as csv_out_file:
+  csv_filename = f'{outpath}/{dataset["classCode"]}.csv'
+
+  with open(csv_filename, 'w', newline='') as csv_out_file:
     fieldnames = results_subset[0].keys()
     csvwriter = csv.DictWriter(csv_out_file, fieldnames=fieldnames)
     csvwriter.writeheader()
     for r in results_subset:
       csvwriter.writerow(r)
+
+  results_df = pd.read_csv(csv_filename)
+  for category in categories:
+    print(f'# {category["name"]}')
+    for i, zoom in enumerate(ZOOMS):
+      print(f'Zoom {i}: Actual dot count:   {results_df[category["code"] + "_dots_" + str(i)].sum()}')
+      print(f'Zoom {i}: Expected dot count: {round(results_df[category["code"] + "_exact_" + str(i)].sum())}')
+      diff = results_df[category["code"] + "_dots_" + str(i)] - results_df[category["code"] + "_exact_" + str(i)]
+      print(f'Zoom {i}: Worst absolute error for an output area:   {diff.abs().max()}')
+      print()
 
