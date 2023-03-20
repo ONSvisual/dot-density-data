@@ -1,28 +1,28 @@
-tippecanoe -z11 -o output/tiles/legal_partnership_status_3a-z11.pmtiles -P -pf -pk output/dots/legal_partnership_status_3a.json.gz
-tippecanoe -z11 -o output/tiles/hh_family_composition_4a-z11.pmtiles -P -pf -pk output/dots/hh_family_composition_4a.json.gz
-tippecanoe -z11 -o output/tiles/country_of_birth_3a-z11.pmtiles -P -pf -pk output/dots/country_of_birth_3a.json.gz
-tippecanoe -z11 -o output/tiles/passports_all_4a-z11.pmtiles -P -pf -pk output/dots/passports_all_4a.json.gz
-tippecanoe -z11 -o output/tiles/sex-z11.pmtiles -P -pf -pk output/dots/sex.json.gz
-tippecanoe -z11 -o output/tiles/hh_deprivation-z11.pmtiles -P -pf -pk output/dots/hh_deprivation.json.gz
-tippecanoe -z11 -o output/tiles/residence_length_6b-z11.pmtiles -P -pf -pk output/dots/residence_length_6b.json.gz
-tippecanoe -z11 -o output/tiles/hh_size_5a-z11.pmtiles -P -pf -pk output/dots/hh_size_5a.json.gz
-tippecanoe -z11 -o output/tiles/migrant_ind-z11.pmtiles -P -pf -pk output/dots/migrant_ind.json.gz
-tippecanoe -z11 -o output/tiles/ethnic_group_tb_6a-z11.pmtiles -P -pf -pk output/dots/ethnic_group_tb_6a.json.gz
-tippecanoe -z11 -o output/tiles/hh_language-z11.pmtiles -P -pf -pk output/dots/hh_language.json.gz
-tippecanoe -z11 -o output/tiles/national_identity_all_4a-z11.pmtiles -P -pf -pk output/dots/national_identity_all_4a.json.gz
-tippecanoe -z11 -o output/tiles/english_proficiency_4a-z11.pmtiles -P -pf -pk output/dots/english_proficiency_4a.json.gz
-tippecanoe -z11 -o output/tiles/accommodation_type_3a-z11.pmtiles -P -pf -pk output/dots/accommodation_type_3a.json.gz
-tippecanoe -z11 -o output/tiles/number_of_cars_5a-z11.pmtiles -P -pf -pk output/dots/number_of_cars_5a.json.gz
-tippecanoe -z11 -o output/tiles/heating_type_3a-z11.pmtiles -P -pf -pk output/dots/heating_type_3a.json.gz
-tippecanoe -z11 -o output/tiles/number_bedrooms_5a-z11.pmtiles -P -pf -pk output/dots/number_bedrooms_5a.json.gz
-tippecanoe -z11 -o output/tiles/occupancy_rating_bedrooms_6a-z11.pmtiles -P -pf -pk output/dots/occupancy_rating_bedrooms_6a.json.gz
-tippecanoe -z11 -o output/tiles/hh_tenure_5a-z11.pmtiles -P -pf -pk output/dots/hh_tenure_5a.json.gz
-tippecanoe -z11 -o output/tiles/workplace_travel_4a-z11.pmtiles -P -pf -pk output/dots/workplace_travel_4a.json.gz
-tippecanoe -z11 -o output/tiles/hours_per_week_worked-z11.pmtiles -P -pf -pk output/dots/hours_per_week_worked.json.gz
-tippecanoe -z11 -o output/tiles/has_ever_worked-z11.pmtiles -P -pf -pk output/dots/has_ever_worked.json.gz
-tippecanoe -z11 -o output/tiles/economic_activity_status_4a-z11.pmtiles -P -pf -pk output/dots/economic_activity_status_4a.json.gz
-tippecanoe -z11 -o output/tiles/highest_qualification_6a-z11.pmtiles -P -pf -pk output/dots/highest_qualification_6a.json.gz
-tippecanoe -z11 -o output/tiles/in_full_time_education-z11.pmtiles -P -pf -pk output/dots/in_full_time_education.json.gz
-tippecanoe -z11 -o output/tiles/health_in_general_4a-z11.pmtiles -P -pf -pk output/dots/health_in_general_4a.json.gz
-tippecanoe -z11 -o output/tiles/disability_3a-z11.pmtiles -P -pf -pk output/dots/disability_3a.json.gz
-tippecanoe -z11 -o output/tiles/is_carer_5a-z11.pmtiles -P -pf -pk output/dots/is_carer_5a.json.gz
+tippecanoe -z11 -o output/tiles/legal_partnership_status_3a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/legal_partnership_status_3a.json.gz
+tippecanoe -z11 -o output/tiles/hh_family_composition_4a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/hh_family_composition_4a.json.gz
+tippecanoe -z11 -o output/tiles/country_of_birth_3a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/country_of_birth_3a.json.gz
+tippecanoe -z11 -o output/tiles/passports_all_4a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/passports_all_4a.json.gz
+tippecanoe -z11 -o output/tiles/sex-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/sex.json.gz
+tippecanoe -z11 -o output/tiles/hh_deprivation-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/hh_deprivation.json.gz
+tippecanoe -z11 -o output/tiles/residence_length_6b-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/residence_length_6b.json.gz
+tippecanoe -z11 -o output/tiles/hh_size_5a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/hh_size_5a.json.gz
+tippecanoe -z11 -o output/tiles/migrant_ind-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/migrant_ind.json.gz
+tippecanoe -z11 -o output/tiles/ethnic_group_tb_6a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/ethnic_group_tb_6a.json.gz
+tippecanoe -z11 -o output/tiles/hh_language-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/hh_language.json.gz
+tippecanoe -z11 -o output/tiles/national_identity_all_4a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/national_identity_all_4a.json.gz
+tippecanoe -z11 -o output/tiles/english_proficiency_4a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/english_proficiency_4a.json.gz
+tippecanoe -z11 -o output/tiles/accommodation_type_3a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/accommodation_type_3a.json.gz
+tippecanoe -z11 -o output/tiles/number_of_cars_5a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/number_of_cars_5a.json.gz
+tippecanoe -z11 -o output/tiles/heating_type_3a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/heating_type_3a.json.gz
+tippecanoe -z11 -o output/tiles/number_bedrooms_5a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/number_bedrooms_5a.json.gz
+tippecanoe -z11 -o output/tiles/occupancy_rating_bedrooms_6a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/occupancy_rating_bedrooms_6a.json.gz
+tippecanoe -z11 -o output/tiles/hh_tenure_5a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/hh_tenure_5a.json.gz
+tippecanoe -z11 -o output/tiles/workplace_travel_4a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/workplace_travel_4a.json.gz
+tippecanoe -z11 -o output/tiles/hours_per_week_worked-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/hours_per_week_worked.json.gz
+tippecanoe -z11 -o output/tiles/has_ever_worked-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/has_ever_worked.json.gz
+tippecanoe -z11 -o output/tiles/economic_activity_status_4a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/economic_activity_status_4a.json.gz
+tippecanoe -z11 -o output/tiles/highest_qualification_6a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/highest_qualification_6a.json.gz
+tippecanoe -z11 -o output/tiles/in_full_time_education-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/in_full_time_education.json.gz
+tippecanoe -z11 -o output/tiles/health_in_general_4a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/health_in_general_4a.json.gz
+tippecanoe -z11 -o output/tiles/disability_3a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/disability_3a.json.gz
+tippecanoe -z11 -o output/tiles/is_carer_5a-z11.pmtiles --exclude=oaCode -P -pf -pk output/dots/is_carer_5a.json.gz
