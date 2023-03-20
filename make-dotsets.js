@@ -49,7 +49,7 @@ function writeDots(oaCode, allPoints, cols, codes, row, dotColourer, output) {
 // Recursive function to run datasets in series (ie. synchronously)
 function runDatasets(n = 0) {
   // FIXME: delete the following line
-  if (n != 0) return;
+  //if (n != 0) return;
 
   if (n >= datasets.length) return;
 
@@ -82,10 +82,10 @@ function runDatasets(n = 0) {
 
     lineReader.on('line', (line) => {
       // FIXME: delete the following chunk of code
-      if (rowCount > MAX_OA) {
-        lineReader.close();
-        return;
-      }
+      // if (rowCount > MAX_OA) {
+      //   lineReader.close();
+      //   return;
+      // }
 
       // Read features line-by-line
       let feature = JSON.parse(line);
