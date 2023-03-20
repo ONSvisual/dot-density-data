@@ -18,12 +18,18 @@ ZOOMS = [
 with open("../output/data/content.json", "r") as f:
   content = json.load(f)
 
-for dataset in content[:1]:
+for dataset in content:
   results = {}
 
   csv_gz_filename = f'../{dataset["filePath"]}'
   dots_gz_filename = f'../output/dots/{dataset["classCode"]}.json.gz'
-  categories = dataset["categories"]
+  categories = [
+    {
+      "code": category["code"],
+      "name": category["nameOld"] if "nameOld" in category else category["name"]
+    }
+    for category in dataset["categories"]
+  ]
 
   with gzip.open(csv_gz_filename, "rt") as csvfile:
     csvreader = csv.DictReader(csvfile)
@@ -74,4 +80,3 @@ for dataset in content[:1]:
       diff = results_df[category["code"] + "_dots_" + str(i)] - results_df[category["code"] + "_exact_" + str(i)]
       print(f'Zoom {i}: Worst absolute error for an output area:   {diff.abs().max()}')
       print()
-
