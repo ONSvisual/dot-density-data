@@ -3,6 +3,7 @@ import zlib from "zlib";
 import readline from "line-by-line";
 import { csvParse, autoType } from "d3-dsv";
 import { shuffle, getZooms, sleep } from "./js/utils.js";
+import ModDotColourer from "./js/mod-dot-colourer.js";
 import RandomRoundingDotColourer from "./js/random-rounding-dot-colourer.js";
 
 const config_path =  "./output/data/content.json";
@@ -52,7 +53,7 @@ function runDatasets(n = 0) {
 
   if (n >= datasets.length) return;
 
-  let dotColourer = new RandomRoundingDotColourer();
+  let dotColourer = new ModDotColourer();
 
   let dataset = datasets[n];
   let path = dataset.filePath;
