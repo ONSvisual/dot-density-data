@@ -3,69 +3,31 @@ import zlib from "zlib";
 import readline from "line-by-line";
 import { csvParse, autoType } from "d3-dsv";
 import { shuffle, getZooms, sleep } from "./js/utils.js";
+import RandomRoundingDotColourer from "./js/random-rounding-dot-colourer.js";
 
 const config_path =  "./output/data/content.json";
 const dots = "./output/dots/oa21-dots.json.gz";
 
 const datasets = JSON.parse(fs.readFileSync(config_path));
 
-const MAX_OA = 10000;
-
-function randomRound(exactDotCount, entitiesPerDot, prevExactDotCount, prevRoundedDotCount, prevEntitiesPerDot) {
-  if (prevExactDotCount != null && prevExactDotCount < 1) {
-    let partialDot = prevRoundedDotCount / entitiesPerDot * prevEntitiesPerDot;
-    return Math.random() < partialDot ? 1 : 0;
-  } else {
-    let floor = Math.floor(exactDotCount);
-    let remainder = exactDotCount - floor;
-    return floor + (Math.random() < remainder ? 1 : 0);
-  }
-}
-
-function calcDotCounts(entityCount, zooms) {
-  let prevRoundedDotCount = null;
-  let prevExactDotCount = null;
-  let prevEntitiesPerDot = null;
-  let dotCounts = [];
-  for (let zoomLevel=zooms.length-1; zoomLevel>=0; zoomLevel--) {
-    let entitiesPerDot = zooms[zoomLevel];
-    let exactDotCount = entityCount / entitiesPerDot;
-    let roundedDotCount = randomRound(
-      exactDotCount, entitiesPerDot, prevExactDotCount, prevRoundedDotCount, prevEntitiesPerDot);
-    dotCounts.push({zoomLevel, exactDotCount, roundedDotCount});
-    prevExactDotCount = exactDotCount;
-    prevRoundedDotCount = roundedDotCount;
-    prevEntitiesPerDot = entitiesPerDot;
-  }
-  dotCounts.reverse();
-  return dotCounts;
-}
+const MAX_OA = 1000;
 
 /*
+ * Write the coloured dots for an output area to file.
+ *
  * Parameters:
  * oaCode    the code of the current output area
  * allPoints the input set of all points (perhaps more than we need)
  * cols      the names of the categories (array of strings)
  * codes     the corresponding codes of the categories (array of strings)
  * row       the row of data for this OA, including a count for each member of cols (Object)
+ * dotColourer   an object that performs the selected dot-colouring algorithm
  * output    the output filename
  */
-function writeDots(oaCode, allPoints, cols, codes, row, output) {
+function writeDots(oaCode, allPoints, cols, codes, row, dotColourer, output) {
   const zooms = getZooms();
 
-  let dotsByZoomLevel = zooms.map(() => []);
-
-  cols.forEach((c, i) => {
-    let entityCount = row[c];
-    let dotCounts = calcDotCounts(entityCount, zooms);
-    let dotCountSoFar = 0;
-    for (let dc of dotCounts) {
-      for (let j=dotCountSoFar; j<dc.roundedDotCount; j++) {
-        dotsByZoomLevel[dc.zoomLevel].push({zoomLevel: dc.zoomLevel, category: codes[i]});
-      }
-      dotCountSoFar = dc.roundedDotCount;
-    }
-  });
+  let dotsByZoomLevel = dotColourer.makeDotsByZoomLevel(zooms, cols, codes, row);
   
   zooms.forEach((z, i) => dotsByZoomLevel[i] = shuffle(dotsByZoomLevel[i]));
 
@@ -85,10 +47,13 @@ function writeDots(oaCode, allPoints, cols, codes, row, output) {
 
 // Recursive function to run datasets in series (ie. synchronously)
 function runDatasets(n = 0) {
-  // // FIXME: delete the following line
-  // if (n != 0) return;
+  // FIXME: delete the following line
+  if (n != 0) return;
 
   if (n >= datasets.length) return;
+
+  let dotColourer = new RandomRoundingDotColourer();
+
   let dataset = datasets[n];
   let path = dataset.filePath;
   zlib.gunzip(fs.readFileSync(path), (err, raw) => {
@@ -115,11 +80,11 @@ function runDatasets(n = 0) {
     const lineReader = new readline(fs.createReadStream(dots).pipe(zlib.createGunzip()));
 
     lineReader.on('line', (line) => {
-      // // FIXME: delete the following chunk of code
-      // if (rowCount > MAX_OA) {
-      //   lineReader.close();
-      //   return;
-      // }
+      // FIXME: delete the following chunk of code
+      if (rowCount > MAX_OA) {
+        lineReader.close();
+        return;
+      }
 
       // Read features line-by-line
       let feature = JSON.parse(line);
@@ -128,7 +93,7 @@ function runDatasets(n = 0) {
         // When a new OA is reached, apply data and write dots for current OA to output file
         if (points) {
           lineReader.pause();
-          let pointsWritten = writeDots(current, points, cols, codes, row, output);
+          let pointsWritten = writeDots(current, points, cols, codes, row, dotColourer, output);
           dotCount += pointsWritten.length;
           if (rowCount % 1000 === 0) console.log(`${classification}: ${dotCount} dots processed from ${rowCount} OAs...`);
           lineReader.resume();
