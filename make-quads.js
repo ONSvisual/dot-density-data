@@ -3,8 +3,10 @@ import zlib from "zlib";
 import { csvParse, autoType, csvFormat } from "d3-dsv";
 
 const config_path = "./output/data/content.json";
+const output_path = "./output/data";
 const lookup_path = (key) => `./input/lookup/${key}21-lookup.csv`;
-const output_path = (key, quad) => `./output/data/${key}/${quad}`;
+const quads_path = (key, quad) => `${output_path}/tiles/${key}/${quad}`;
+const breaks_path = `${output_path}/ew`;
 const keys = ["lad", "msoa", "oa"];
 
 let lookups = {};
@@ -23,18 +25,18 @@ async function makeData(variables, n = 0) {
     let cols = cats.map(c => c.nameOld ? `Percentage: ${c.nameOld}` : `Percentage: ${c.name}`);
     let data_lookup = {};
     data_raw.forEach(d => {
-      let row = {areacd: d["Geography code"]};
+      let row = {geography_code: d["Geography code"]};
       names.forEach((name, i) => row[name] = d[cols[i]]);
-      data_lookup[row.areacd] = row;
+      data_lookup[row.geography_code] = row;
     });
     keys.forEach(key => {
       let quads = Object.keys(lookups[key]);
       quads.forEach(quad => {
         let rows = lookups[key][quad].map(code => data_lookup[code]);
         let csv = csvFormat(rows);
-        let path = output_path(key, quad.replaceAll("_","-"));
-        if (!fs.existsSync(`./output/data/${key}`)){
-          fs.mkdirSync(`./output/data/${key}`);
+        let path = quads_path(key, quad.replaceAll("_","-"));
+        if (!fs.existsSync(`./output/data/tiles/${key}`)){
+          fs.mkdirSync(`./output/data/tiles/${key}`);
         }
         if (!fs.existsSync(path)){
           fs.mkdirSync(path);
@@ -42,6 +44,11 @@ async function makeData(variables, n = 0) {
         fs.writeFileSync(`${path}/${variable.classCode}.csv`, csv);
       });
     });
+    const ew = data_lookup["K04000001"];
+    let vals = {};
+    names.forEach((name) => vals[name] = ew[name]);
+    fs.writeFileSync(`${breaks_path}/${variable.classCode}.json`, JSON.stringify(vals));
+    
     makeData(variables, n + 1);
   });
 };
