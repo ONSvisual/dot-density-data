@@ -107,6 +107,10 @@ function runDatasets(n = 0) {
       points.push(feature);
     });
     lineReader.on("end", async () => {
+      let pointsWritten = writeDots(current, points, cols, codes, row, dotColourer, output);
+      dotCount += pointsWritten.length;
+      console.log(`${classification}: ${dotCount} dots processed from ${rowCount} OAs...`);
+
       // Gzip completed dataset
       await sleep();
       const gzip = zlib.createGzip();
