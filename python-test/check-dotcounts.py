@@ -58,6 +58,11 @@ for dataset in content:
       for zoom in range(line["tippecanoe"]["minzoom"], len(ZOOMS)):
         oa_dots[line["properties"]["cat"]][zoom] += 1
 
+  # Store results for the final OA
+  for category in categories:
+    for i, zoom in enumerate(ZOOMS):
+      results[oa_code][category["code"] + "_dots_" + str(i)] = oa_dots[category["code"]][i]
+
   results_subset = [r for r in results.values() if categories[0]["code"] + "_dots_0" in r]
 
   #print(results_subset)
