@@ -3,5 +3,7 @@
 /node_modules/
 /output/dirs/*
 /python-test/results
+/output/tiles/
+/output/dirs/
 
 .DS_Store
