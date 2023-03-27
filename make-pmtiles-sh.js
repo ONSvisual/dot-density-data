@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const zoom = 11;
+const zoom = 14;
 const config_path = "./output/data/content.json";
 
 // --exclude=oaCode is here because OA code isn't needed for the dot
