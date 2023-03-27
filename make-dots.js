@@ -23,8 +23,8 @@ lineReader.on('line', (line) => {
   // Generate dots for each OA (in JSON-LD each line is one OA)
   lineReader.pause();
   let feature = JSON.parse(line);
-  // Generate 5% extra dots to account for perturbation in datasets
-  let dots = genDots(feature, lookup[feature.properties.OA21CD] * 1.05);
+  // Generate 30 extra dots to account for perturbation in datasets
+  let dots = genDots(feature, lookup[feature.properties.OA21CD] + 30);
   fs.appendFileSync(output, `${dots.map(d => JSON.stringify(d)).join('\n')}\n`);
   if (n % 1000 === 0) console.log(`${n} OAs processed...`);
   n ++;
