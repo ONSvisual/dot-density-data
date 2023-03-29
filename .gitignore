@@ -5,6 +5,7 @@
 /python-test/results
 /output/tiles/
 /output/dirs/
+/output/dirs-zips/
 
 .DS_Store
 input/geo/oa21-bfc-clipped.json.gz
