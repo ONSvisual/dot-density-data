@@ -1,7 +1,9 @@
 import fs from "fs";
 
 const pmtiles_path = "./output/tiles/";
-const cmd = (key, file) => `tile-join -e output/dirs/${key} -pk output/tiles/${file}`;
+const cmd = (key, file) => 
+    `tile-join -e output/dirs/${key} -pk output/tiles/${file}\n` +
+        `(cd output/dirs/${key} && zip -r "../../dir-zips/${key}.zip" .)`;
 
 let datasets = [];
 

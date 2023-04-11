@@ -1,0 +1,87 @@
+import csv
+import gzip
+import json
+import pandas as pd
+
+import os
+outpath = 'results'
+os.makedirs(outpath, exist_ok=True)
+
+ZOOMS = [
+  50000, 20000, 10000,
+  5000, 2000, 1000,
+  500, 200, 100,
+  50, 20, 10,
+  5, 2, 1
+]
+
+with open("../output/data/content.json", "r") as f:
+  content = json.load(f)
+
+for dataset in content:
+  results = {}
+
+  csv_gz_filename = f'../{dataset["filePath"]}'
+  dots_gz_filename = f'../output/dots/{dataset["classCode"]}.json.gz'
+  categories = [
+    {
+      "code": category["code"],
+      "name": category["nameOld"] if "nameOld" in category else category["name"]
+    }
+    for category in dataset["categories"]
+  ]
+
+  with gzip.open(csv_gz_filename, "rt") as csvfile:
+    csvreader = csv.DictReader(csvfile)
+    for line in csvreader:
+      results[line["Geography code"]] = {
+        "oa": line["Geography code"]
+      }
+      for category in categories:
+        for i, zoom in enumerate(ZOOMS):
+          results[line["Geography code"]][category["code"] + "_exact_" + str(i)] = float(line[category["name"]]) / zoom
+
+  print(f"Finished reading {csv_gz_filename}")
+  oa_code = None
+  with gzip.open(dots_gz_filename, "rt") as dotsfile:
+    for line in dotsfile:
+      line = json.loads(line)
+      if oa_code != line["properties"]["oaCode"]:
+        if oa_code != None:
+          #print(oa_dots)
+          for category in categories:
+            for i, zoom in enumerate(ZOOMS):
+              results[oa_code][category["code"] + "_dots_" + str(i)] = oa_dots[category["code"]][i]
+          #print(results[oa_code])
+        oa_code = line["properties"]["oaCode"]
+        oa_dots = {c["code"]: [0] * len(ZOOMS) for c in categories}
+      for zoom in range(line["tippecanoe"]["minzoom"], len(ZOOMS)):
+        oa_dots[line["properties"]["cat"]][zoom] += 1
+
+  # Store results for the final OA
+  for category in categories:
+    for i, zoom in enumerate(ZOOMS):
+      results[oa_code][category["code"] + "_dots_" + str(i)] = oa_dots[category["code"]][i]
+
+  results_subset = [r for r in results.values() if categories[0]["code"] + "_dots_0" in r]
+
+  #print(results_subset)
+
+  csv_filename = f'{outpath}/{dataset["classCode"]}.csv'
+
+  with open(csv_filename, 'w', newline='') as csv_out_file:
+    fieldnames = results_subset[0].keys()
+    csvwriter = csv.DictWriter(csv_out_file, fieldnames=fieldnames)
+    csvwriter.writeheader()
+    for r in results_subset:
+      csvwriter.writerow(r)
+
+  results_df = pd.read_csv(csv_filename)
+  for category in categories:
+    print(f'# {category["name"]}')
+    for i, zoom in enumerate(ZOOMS):
+      print(f'Zoom {i}: Actual dot count:   {results_df[category["code"] + "_dots_" + str(i)].sum()}')
+      print(f'Zoom {i}: Expected dot count: {round(results_df[category["code"] + "_exact_" + str(i)].sum())}')
+      diff = results_df[category["code"] + "_dots_" + str(i)] - results_df[category["code"] + "_exact_" + str(i)]
+      print(f'Zoom {i}: Worst absolute error for an output area:   {diff.abs().max()}')
+      print()

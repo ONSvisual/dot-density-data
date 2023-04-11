@@ -2,5 +2,10 @@
 /output/dots/*
 /node_modules/
 /output/dirs/*
+/python-test/results
+/output/tiles/
+/output/dirs/
+/output/dir-zips/
 
 .DS_Store
+input/geo/oa21-bfc-clipped.json.gz

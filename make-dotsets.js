@@ -2,16 +2,59 @@ import fs from "fs";
 import zlib from "zlib";
 import readline from "line-by-line";
 import { csvParse, autoType } from "d3-dsv";
-import { shuffle, getZoomBreaks, getMinzoom, sleep } from "./js/utils.js";
+import { shuffle, getZooms, sleep } from "./js/utils.js";
+import ModDotColourer from "./js/mod-dot-colourer.js";
+import RandomRoundingDotColourer from "./js/random-rounding-dot-colourer.js";
 
 const config_path =  "./output/data/content.json";
 const dots = "./output/dots/oa21-dots.json.gz";
 
 const datasets = JSON.parse(fs.readFileSync(config_path));
 
+const MAX_OA = 1000;
+
+/*
+ * Write the coloured dots for an output area to file.
+ *
+ * Parameters:
+ * oaCode    the code of the current output area
+ * allPoints the input set of all points (perhaps more than we need)
+ * cols      the names of the categories (array of strings)
+ * codes     the corresponding codes of the categories (array of strings)
+ * row       the row of data for this OA, including a count for each member of cols (Object)
+ * dotColourer   an object that performs the selected dot-colouring algorithm
+ * output    the output filename
+ */
+function writeDots(oaCode, allPoints, cols, codes, row, dotColourer, output) {
+  const zooms = getZooms();
+
+  let dotsByZoomLevel = dotColourer.makeDotsByZoomLevel(zooms, cols, codes, row);
+  
+  zooms.forEach((z, i) => dotsByZoomLevel[i] = shuffle(dotsByZoomLevel[i]));
+
+  const dots = dotsByZoomLevel.flat();
+
+  if (dots.length > allPoints.length) throw "Not enough input points!";
+
+  const points = allPoints.slice(0, dots.length);
+  points.forEach((p, i) => {
+    p.tippecanoe = {minzoom: dots[i].zoomLevel};
+    p.properties = {cat: dots[i].category, oaCode};
+  })
+
+  fs.appendFileSync(output, `${points.map(d => JSON.stringify(d)).join('\n')}\n`);
+  return points;
+}
+
 // Recursive function to run datasets in series (ie. synchronously)
 function runDatasets(n = 0) {
+  // FIXME: delete the following line
+  //if (n != 0) return;
+
   if (n >= datasets.length) return;
+
+  let dotColourer = new ModDotColourer();
+
   let dataset = datasets[n];
   let path = dataset.filePath;
   zlib.gunzip(fs.readFileSync(path), (err, raw) => {
@@ -30,7 +73,6 @@ function runDatasets(n = 0) {
     // Data for current OA
     let current;
     let row;
-    let count;
     let points;
 
     // Create output file, and start reading dot geometry file line-by-line
@@ -39,6 +81,12 @@ function runDatasets(n = 0) {
     const lineReader = new readline(fs.createReadStream(dots).pipe(zlib.createGunzip()));
 
     lineReader.on('line', (line) => {
+      // FIXME: delete the following chunk of code
+      // if (rowCount > MAX_OA) {
+      //   lineReader.close();
+      //   return;
+      // }
+
       // Read features line-by-line
       let feature = JSON.parse(line);
       let code = feature.properties.oa;
@@ -46,38 +94,23 @@ function runDatasets(n = 0) {
         // When a new OA is reached, apply data and write dots for current OA to output file
         if (points) {
           lineReader.pause();
-          points = points.slice(0, count);
-          const len = points.length;
-          const cats = (() => {
-            // Category index for each dot
-            // Shuffled to ensure random layout + even dropping by zoom level
-            let cts = [];
-            cols.forEach((c, i) => {
-              for (let j = 0; j < row[c]; j ++) {
-                cts.push(i);
-              }
-            });
-            return shuffle(cts);
-          })();
-          const zoomBreaks = getZoomBreaks(len);
-          points.forEach((p, i) => {
-            p.tippecanoe = {minzoom: getMinzoom(zoomBreaks, i)};
-            p.properties = {cat: codes[cats[i]]};
-          });
-          fs.appendFileSync(output, `${points.map(d => JSON.stringify(d)).join('\n')}\n`);
-          dotCount += len;
+          let pointsWritten = writeDots(current, points, cols, codes, row, dotColourer, output);
+          dotCount += pointsWritten.length;
           if (rowCount % 1000 === 0) console.log(`${classification}: ${dotCount} dots processed from ${rowCount} OAs...`);
           lineReader.resume();
         }
         current = code;
         row = lookup[code];
-        count = cols.map(c => row[c]).reduce((a, b) => a + b, 0);
         points = [];
         rowCount ++;
       }
       points.push(feature);
     });
     lineReader.on("end", async () => {
+      let pointsWritten = writeDots(current, points, cols, codes, row, dotColourer, output);
+      dotCount += pointsWritten.length;
+      console.log(`${classification}: ${dotCount} dots processed from ${rowCount} OAs...`);
+
       // Gzip completed dataset
       await sleep();
       const gzip = zlib.createGzip();
